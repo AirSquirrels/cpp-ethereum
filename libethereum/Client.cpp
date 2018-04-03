@@ -288,10 +288,7 @@ void Client::reopenChain(ChainParams const& _p, WithExisting _we)
     }
 
     if (auto h = m_host.lock())
-    {
         h->reset();
-        h->completeSync();  // set sync state to idle for mining
-    }
 
     startedWorking();
     doWork();
