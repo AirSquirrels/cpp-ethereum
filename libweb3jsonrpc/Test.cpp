@@ -40,7 +40,8 @@ bool Test::test_setChainParams(Json::Value const& param1)
 		Json::FastWriter fastWriter;
 		std::string output = fastWriter.write(param1);
 		asClientTest(m_eth).setChainParams(output);
-	}
+        asClientTest(m_eth).completeSync();  // set sync state to idle for mining
+    }
 	catch (std::exception const&)
 	{
 		BOOST_THROW_EXCEPTION(JsonRpcException(Errors::ERROR_RPC_INTERNAL_ERROR));
